@@ -1,9 +1,11 @@
 package io.github.parkerchen.springbootmybatisplus;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+@MapperScan(value = "io.github.parkerchen.springbootmybatisplus.mapper")
 public class SpringBootMybatisPlusApplication {
 
     public static void main(String[] args) {

@@ -14,14 +14,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class user {
+public class User {
     @TableId(type = IdType.AUTO)
     private Long id;
-    @TableField("name")
     private String name;
-    @TableField("age")
     private Integer age;
-    @TableField("email")
     private String email;
+    private long createTime;
+    private long updateTime;
 
 }
