@@ -1,9 +1,6 @@
 package io.github.parkerchen.springbootmybatisplus.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,7 +17,9 @@ public class User {
     private String name;
     private Integer age;
     private String email;
-    private long createTime;
-    private long updateTime;
+    @TableField(value = "create_time", fill = FieldFill.INSERT)
+    private Long createTime;
+    @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
+    private Long updateTime;
 
 }
