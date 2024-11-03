@@ -9,6 +9,6 @@
   - As of v3.5.9, the **PaginationInnerInterceptor** has been separated. To use it, you need to introduce the **mybatis-plus-jsqlparser** dependency separately.
   - Check [https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-jsqlparser/3.5.9]
 3. Inserfill or updatefill doesn't work.
-  - Check if the column name matches the entity class. (for example, "createTime" in class != "create_time" in DB)
-  - Use 'value = "(col name)"' in annotation to match column.
-  - Also have to check the handler's parameter.
+  - Check if the column name matches the entity class. (for example, "createTime" in class != "create_time" in DB). Use 'value = "(column name)"' in the annotation to match the column.
+  - Also have to check the handler's parameter, should be the same as it is in the entity.
+  - Check if the entity attribute is a basic type. For a basic type, its default value is 0, which will not be changed by the handler. If it is, change them to the class type. (long -> Long).
