@@ -10,4 +10,5 @@
   - Check [https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-jsqlparser/3.5.9]
 3. Inserfill or updatefill doesn't work.
   - Check if the column name matches the entity class. (for example, "createTime" in class != "create_time" in DB)
-  - use 'value = "(col name)"' in annotation to match column.
+  - Use 'value = "(col name)"' in annotation to match column.
+  - Also have to check the handler's parameter.
