@@ -21,5 +21,7 @@ public class User {
     private Long createTime;
     @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
     private Long updateTime;
+    @Version
+    private Long version;
 
 }

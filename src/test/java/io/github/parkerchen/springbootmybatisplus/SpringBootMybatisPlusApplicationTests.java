@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
 import java.util.HashMap;
@@ -136,5 +137,28 @@ class SpringBootMybatisPlusApplicationTests {
         long total = userPage.getTotal();
         System.out.println(records);
         System.out.println(total);
+    }
+
+    @Transactional
+    void testVersion() {
+        User user = mapper.selectById(27L);
+        User doubleSelect = mapper.selectById(27L);
+
+        user.setAge(20);
+        doubleSelect.setAge(21);
+
+        mapper.updateById(user);
+        int count = mapper.updateById(doubleSelect);
+        if (count == 0) {
+            System.out.println("Update failed");
+        } else {
+            System.out.println("Update success");
+        }
+    }
+
+    @Test
+    // Optimistic lock, the second update will fail(counter == 0)
+    void testVersionExecutor () {
+        testVersion();
     }
 }
